@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ControlFlowExercises {
     public static void main(String[] args) {
         // 1 Loop Basics
@@ -47,17 +49,42 @@ public class ControlFlowExercises {
 //        }
 
         // 2. Fizzbuzz
-        for (int i = 1; i <= 100; i++) {
-            if (i % 3 == 0 & i % 5 == 0) {
-                System.out.println("FizzBuzz");
-            } else if (i % 3 == 0) {
-                System.out.println("Fizz");
-            } else if (i % 5 == 0) {
-                System.out.println("Buzz");
-            } else {
-                System.out.println(i);
+//        for (int i = 1; i <= 100; i++) {
+//            if (i % 3 == 0 & i % 5 == 0) {
+//                System.out.println("FizzBuzz");
+//            } else if (i % 3 == 0) {
+//                System.out.println("Fizz");
+//            } else if (i % 5 == 0) {
+//                System.out.println("Buzz");
+//            } else {
+//                System.out.println(i);
+//            }
+//        }
+
+        // 3. Display a table of powers
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("What number would you like to go up to? ");
+        int userInt = scanner.nextInt();
+        int square;
+        int cube;
+        System.out.println("\nHere is your table!\n");
+        System.out.println("number | squared | cubed");
+        System.out.println("------ | ------- | -----");
+        for (int i = 1; i <= userInt; i++) {
+            square = i * i;
+            cube = i  * i * i;
+            if (square < 10) {
+                System.out.println(i + "      | " + square + "       | " + cube);
+            } else if (square < 100) {
+                System.out.println(i + "      | " + square + "      | " + cube);
+            } else if (square < 1000) {
+                System.out.println(i + "      | " + square + "     | " + cube);
+            } else if (square < 10000) {
+                System.out.println(i + "      | " + square + "    | " + cube);
             }
+
         }
+
 
     }
 }
