@@ -63,28 +63,42 @@ public class ControlFlowExercises {
 
         // 3. Display a table of powers
         Scanner scanner = new Scanner(System.in);
-        System.out.print("What number would you like to go up to? ");
-        int userInt = scanner.nextInt();
-        int square;
-        int cube;
-        System.out.println("\nHere is your table!\n");
-        System.out.println("number | squared | cubed");
-        System.out.println("------ | ------- | -----");
-        for (int i = 1; i <= userInt; i++) {
-            square = i * i;
-            cube = i  * i * i;
-            if (square < 10) {
-                System.out.println(i + "      | " + square + "       | " + cube);
-            } else if (square < 100) {
-                System.out.println(i + "      | " + square + "      | " + cube);
-            } else if (square < 1000) {
-                System.out.println(i + "      | " + square + "     | " + cube);
-            } else if (square < 10000) {
-                System.out.println(i + "      | " + square + "    | " + cube);
+        System.out.println("Would you like to continue the game?(Note: only 'YES' let you continue)");
+        String continueTheGame = scanner.nextLine();
+        if (continueTheGame.equalsIgnoreCase("yes")) {
+            System.out.print("What number would you like to go up to? ");
+            int userInt = scanner.nextInt();
+            int square;
+            int cube;
+            System.out.println("\nHere is your table!\n");
+            System.out.println("number | squared | cubed");
+            System.out.println("------ | ------- | -----");
+            for (int i = 1; i <= userInt; i++) {
+                square = i * i;
+                cube = i  * i * i;
+                if (square < 10) {
+                    System.out.println(i + "      | " + square + "       | " + cube);
+                } else if (square < 100) {
+                    System.out.println(i + "      | " + square + "      | " + cube);
+                } else if (square < 1000) {
+                    System.out.println(i + "      | " + square + "     | " + cube);
+                } else if (square < 10000) {
+                    System.out.println(i + "      | " + square + "    | " + cube);
+                } else if (square < 100000) {
+                    System.out.println(i + "      | " + square + "   | " + cube);
+                } else if (square < 1000000) {
+                    System.out.println(i + "      | " + square + "  | " + cube);
+                } else if (square < 10000000) {
+                    System.out.println(i + "      | " + square + " | " + cube);
+                }
             }
-
+        } else {
+            System.out.println("I'm sorry that you don't want to play our game.");
         }
 
+        // 4. Convert given number grades into letter grades
+//        System.out.println("What grade did you get form the assessment? (Note: 0 - 100)");
+//        int grade
 
     }
 }
