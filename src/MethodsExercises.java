@@ -44,9 +44,10 @@ public class MethodsExercises {
         Scanner scanner = new Scanner(System.in);
         int userInput = scanner.nextInt();
         if (userInput >= min & userInput <= max) {
+            System.out.println(userInput);
             return userInput;
         } else {
-            System.out.print("Enter a number between " + min + " and " + max + ": ");
+            System.out.printf("Enter a number between %d and %d: ", min, max);
             return getInteger(min, max);
         }
     }
@@ -78,9 +79,23 @@ public class MethodsExercises {
             System.out.print("Continue?[Y/N] ");
             answer = scanner.next();
         } while (answer.equalsIgnoreCase("Y"));
+    }
 
-
-
+    // 4. Create an application that simulates dice rolling
+    public static void rollDice() {
+        String answer;
+        do {
+            System.out.print("How many sides are there on the pair of dice? ");
+            Scanner scanner = new Scanner(System.in);
+            // get diceSide from user input
+            int diceSide = scanner.nextInt();
+            System.out.println("Roll the dice.");
+            int result1 = (int) (Math.random() * (diceSide - 1) + 1);
+            int result2 = (int) (Math.random() * (diceSide - 1) + 1);
+            System.out.printf("You just rolled %d and %d!\n", result1, result2);
+            System.out.print("Would you like to roll the dice again?[Yes/No] ");
+            answer = scanner.next();
+        } while (answer.equalsIgnoreCase("Yes"));
     }
 
     public static void main(String[] args) {
@@ -101,5 +116,8 @@ public class MethodsExercises {
 
         // 3
         calculateFactorial();
+
+        // 4
+        rollDice();
     }
 }
