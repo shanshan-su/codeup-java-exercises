@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MethodsExercises {
     // 1. Basic Arithmetic
     public static double add(double num1, double num2) {
@@ -37,7 +39,21 @@ public class MethodsExercises {
         }
     }
 
+    // 2. Create a method that validates that user input is in a certain range
+
+    public static int getInteger(int min, int max) {
+        Scanner scanner = new Scanner(System.in);
+        int userInput = scanner.nextInt();
+        if (userInput >= min & userInput <= max) {
+            return userInput;
+        } else {
+            System.out.print("Enter a number between " + min + " and " + max + ": ");
+            return getInteger(min, max);
+        }
+    }
+
     public static void main(String[] args) {
+        // 1
         System.out.println("Addition: " + add(193, 98765));
         System.out.println("Subtraction: " + subtract(1234567, 76543));
         System.out.println("Multiplication: " + multiple(13, 904));
@@ -47,5 +63,9 @@ public class MethodsExercises {
         System.out.println("Modulus: " + modulus(97, 0));
         System.out.println("Multiplication: " + multipleForLoop(13, 904));
         System.out.println("Multiplication: " + multipleRecursion(13, 904));
+
+        // 2
+        System.out.print("Enter a number between 1 and 10: ");
+        int userInput = getInteger(1, 10);
     }
 }
