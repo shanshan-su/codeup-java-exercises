@@ -3,8 +3,8 @@ public class ConsoleExercises {
     public static void main(String[] args) {
         // Exercise 1
         double pi = 3.14159;
-
-        System.out.format("The value of pi is approximately %.2f.%n", pi);
+        System.out.format("The value of pi is approximately %.2f.\n", pi);
+//        System.out.format("The value of pi is approximately %.2f.%n", pi);
 
         // Explore the scanner class
         Scanner scanner = new Scanner(System.in);
@@ -25,6 +25,7 @@ public class ConsoleExercises {
         System.out.printf("You entered these three words: %s, %s, %s.\n", userString1, userString2, userString3);
         // only get the first three words if enter more than 3 words.
         // if enter less than 3 words, it will not end when press enter until finish entering 3 words
+        // with scanner.useDelimiter("\n") need to press enter after every word
 
         // 3
         System.out.println("Please enter a sentence.");
@@ -33,6 +34,7 @@ public class ConsoleExercises {
 
         // 4
         String userSentence = scanner.nextLine();
+        System.out.println("You entered:");
         System.out.println(userSentence);
 
         // Calculate the perimeter and area of Codeup's classrooms
