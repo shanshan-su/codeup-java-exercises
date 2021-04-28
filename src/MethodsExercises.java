@@ -81,6 +81,32 @@ public class MethodsExercises {
         } while (answer.equalsIgnoreCase("Y"));
     }
 
+    // 3 bonus
+    public static long calculateFactorialBonus(int userInput) {
+        if (userInput == 0) {
+            return 1;
+        } else {
+            return userInput * calculateFactorialBonus(userInput - 1);
+        }
+    }
+
+    public static String getFactorial(int userInput) {
+        String result = userInput + "! = ";
+        if (userInput == 0) {
+            return "0!";
+        } else if (userInput < 0 || userInput > 20) {
+            return "";
+        } else if (userInput == 1) {
+            return "1! = 1";
+        } else {
+            for (int i = 1; i < userInput; i++) {
+                result = result + i + " x ";
+            }
+            result = result + userInput;
+            return result;
+        }
+    }
+
     // 4. Create an application that simulates dice rolling
     public static void rollDice() {
         String answer;
@@ -90,13 +116,14 @@ public class MethodsExercises {
             // get diceSide from user input
             int diceSide = scanner.nextInt();
             System.out.println("Roll the dice.");
-            int result1 = (int) (Math.random() * (diceSide - 1) + 1);
-            int result2 = (int) (Math.random() * (diceSide - 1) + 1);
+            int result1 = (int) (Math.random() * diceSide + 1);
+            int result2 = (int) (Math.random() * diceSide + 1);
             System.out.printf("You just rolled %d and %d!\n", result1, result2);
             System.out.print("Would you like to roll the dice again?[Yes/No] ");
             answer = scanner.next();
         } while (answer.equalsIgnoreCase("Yes"));
     }
+
 
     public static void main(String[] args) {
         // 1
@@ -115,9 +142,28 @@ public class MethodsExercises {
         int userInput = getInteger(1, 10);
 
         // 3
-        calculateFactorial();
+//        calculateFactorial();
+
+        // 3 bonus
+        String answer;
+        do {
+            System.out.print("Enter a number between 1 and 20: ");
+            Scanner scanner = new Scanner(System.in);
+            userInput = scanner.nextInt();
+            if (userInput < 0 || userInput > 20) {
+                System.out.println("The number you entered is not between 1 and 20.");
+            } else {
+                long factorial = calculateFactorialBonus(userInput);
+                String process = getFactorial(userInput);
+                System.out.printf("%s = %d\n", process, factorial);
+            }
+
+            System.out.print("Continue?[Y/N] ");
+            answer = scanner.next();
+        } while (answer.equalsIgnoreCase("Y"));
+
 
         // 4
-        rollDice();
+//        rollDice();
     }
 }
