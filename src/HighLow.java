@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class HighLow {
-    public static void main(String[] args) {
-        // 5. Game Development 101
+    // 5. Game Development 101
+    public static void highLowGame() {
         // get a random number between 1 and 100
         int random = (int)(Math.random() * 100 + 1);
 
@@ -12,17 +12,33 @@ public class HighLow {
 
         // get userInput
         int userInput = scanner.nextInt();
-        do {
-            if (userInput > random) {
+        int count = 1;
+
+        while (true) {
+            if (count > 10) {
+                System.out.println("Oops, game over :(");
+                break;
+            }
+            if (userInput < 1 || userInput > 100) {
+                System.out.println("Sorry, the number you entered is not between 1 and 100.");
+            } else if (userInput > random) {
                 System.out.println("LOWER");
-            } else {
+            } else if (userInput < random) {
                 System.out.println("HIGHER");
             }
             System.out.println("Try again.");
             userInput = scanner.nextInt();
-        } while (userInput != random);
+            count++;
+            if (userInput == random) {
+                System.out.println("GOOD GUESS!");
+                System.out.printf("Good job! You've only tried %d times!\n", count);
+                break;
+            }
+        }
+    }
 
-        System.out.println("GOOD GUESS!");
 
+    public static void main(String[] args) {
+        highLowGame();
     }
 }
