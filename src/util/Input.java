@@ -3,15 +3,18 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner;
+    private static Scanner scanner;
 
-    String getString() {
+    static String getString() {
+        System.out.println("Please enter a string.");
         scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    boolean yesNo() {
-        String input = getString();
+    static boolean yesNo() {
+        System.out.println("Please enter a string.");
+        scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
         if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
             return true;
         } else {
@@ -19,7 +22,7 @@ public class Input {
         }
     }
 
-    int getInt(int min, int max) {
+    static int getInt(int min, int max) {
         int integer = getInt();
         while (integer < min || integer > max) {
             System.out.printf("Please enter an integer between %d and %d.\n", min, max);
@@ -29,13 +32,13 @@ public class Input {
         return integer;
     }
 
-    int getInt() {
+    static int getInt() {
         System.out.println("Please enter a whole number.");
         scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
-    double getDouble(double min, double max) {
+    static double getDouble(double min, double max) {
         double decimal = getDouble();
         while (decimal < min || decimal > max) {
             System.out.printf("Please enter an decimal between %f and %f.\n", min, max);
@@ -45,7 +48,7 @@ public class Input {
         return decimal;
     }
 
-    double getDouble() {
+    static double getDouble() {
         System.out.println("Please enter a decimal number.");
         scanner = new Scanner(System.in);
         return scanner.nextDouble();
