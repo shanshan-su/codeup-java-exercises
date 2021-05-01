@@ -48,8 +48,7 @@ public class Input {
         return decimal;
     }
 
-    static double getDouble() {
-        System.out.println("Please enter a decimal number.");
+    public static double getDouble() {
         scanner = new Scanner(System.in);
         return scanner.nextDouble();
     }

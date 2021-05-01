@@ -82,30 +82,20 @@ public class MethodsExercises {
     }
 
     // 3 bonus
-    public static long calculateFactorialBonus(int userInput) {
+    public static long calculateFactorialBonus(String result, int i, int userInput) {
         if (userInput == 0) {
+            System.out.println("0!               = ");
+            return 1;
+        } else if (userInput == 1) {
+            System.out.println("1! = 1           = ");
             return 1;
         } else {
-            return userInput * calculateFactorialBonus(userInput - 1);
+            result = result + i;
+            System.out.printf("%s = ", result);
+            return userInput * calculateFactorialBonus(result, i++,userInput - 1);
         }
     }
 
-    public static String getFactorial(int userInput) {
-        String result = userInput + "! = ";
-        if (userInput == 0) {
-            return "0!";
-        } else if (userInput < 0 || userInput > 20) {
-            return "";
-        } else if (userInput == 1) {
-            return "1! = 1";
-        } else {
-            for (int i = 1; i < userInput; i++) {
-                result = result + i + " x ";
-            }
-            result = result + userInput;
-            return result;
-        }
-    }
 
     // 4. Create an application that simulates dice rolling
     public static void rollDice() {
@@ -150,12 +140,13 @@ public class MethodsExercises {
             System.out.print("Enter a number between 1 and 20: ");
             Scanner scanner = new Scanner(System.in);
             userInput = scanner.nextInt();
+            String result = userInput + "! = ";
+            int i = 1;
             if (userInput < 0 || userInput > 20) {
                 System.out.println("The number you entered is not between 1 and 20.");
             } else {
-                long factorial = calculateFactorialBonus(userInput);
-                String process = getFactorial(userInput);
-                System.out.printf("%s = %d\n", process, factorial);
+                long factorial = calculateFactorialBonus(result, i, userInput);
+                System.out.print(factorial);
             }
 
             System.out.print("Continue?[Y/N] ");
