@@ -27,4 +27,8 @@ public class Circle {
     public double getCircumference(double radius) {
         return 2 * Math.PI * radius;
     }
+
+    public static int addOne(int number) {
+        return number + 1;
+    }
 }
