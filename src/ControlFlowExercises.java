@@ -23,12 +23,12 @@ public class ControlFlowExercises {
 //            i -= 5;
 //        } while (i >= -10);
 
-//        long i = 2;
+//        long i = 2L;
 //        System.out.println(i);
 //        do {
 //            System.out.println(i);
 //            i = i * i;
-//        } while (i < 1000000);
+//        } while (i < 1_000_000);
 
         // c. For
 
@@ -44,7 +44,7 @@ public class ControlFlowExercises {
             System.out.println(i);
         }
 
-        for (long i = 2; i < 1000000; i *= i) {
+        for (long i = 2L; i < 1_000_000; i *= i) {
             System.out.println(i);
         }
 
@@ -75,21 +75,22 @@ public class ControlFlowExercises {
             for (int i = 1; i <= userInt; i++) {
                 square = i * i;
                 cube = i  * i * i;
-                if (i < 10 & square < 10) {
-                    System.out.println(i + "      | " + square + "       | " + cube);
-                } else if (i < 10 & square < 100) {
-                    System.out.println(i + "      | " + square + "      | " + cube);
-                } else if (i >= 10 & square < 1000) {
-                    System.out.println(i + "     | " + square + "     | " + cube);
-                } else if (i >= 10 & square < 10000) {
-                    System.out.println(i + "     | " + square + "    | " + cube);
-                } else if (i >= 100 & square < 100000) {
-                    System.out.println(i + "    | " + square + "   | " + cube);
-                } else if (i >= 100 & square < 1000000) {
-                    System.out.println(i + "    | " + square + "  | " + cube);
-                } else if (i >= 1000 & square < 10000000) {
-                    System.out.println(i + "   | " + square + " | " + cube);
-                }
+                System.out.printf("%-6d | %-7d | %d\n", i, square, cube);
+//                if (i < 10 & square < 10) {
+//                    System.out.println(i + "      | " + square + "       | " + cube);
+//                } else if (i < 10 & square < 100) {
+//                    System.out.println(i + "      | " + square + "      | " + cube);
+//                } else if (i >= 10 & square < 1000) {
+//                    System.out.println(i + "     | " + square + "     | " + cube);
+//                } else if (i >= 10 & square < 10000) {
+//                    System.out.println(i + "     | " + square + "    | " + cube);
+//                } else if (i >= 100 & square < 100000) {
+//                    System.out.println(i + "    | " + square + "   | " + cube);
+//                } else if (i >= 100 & square < 1000000) {
+//                    System.out.println(i + "    | " + square + "  | " + cube);
+//                } else if (i >= 1000 & square < 10000000) {
+//                    System.out.println(i + "   | " + square + " | " + cube);
+//                }
             }
 
             System.out.println("\nWould you like to continue the game? (Note: only 'YES' let you continue)");
@@ -104,17 +105,17 @@ public class ControlFlowExercises {
 //         do {
 //            System.out.println("What grade did you get form the assessment? (Note: 0 - 100)");
 //            int grade = scanner.nextInt();
-//            char letterGrade = 'G';
-//            if (grade >= 0 & grade <= 59) {
-//                letterGrade = 'F';
-//            } else if (grade >= 60 & grade <= 66) {
-//                letterGrade = 'D';
-//            } else if (grade >= 67 & grade <= 79) {
-//                letterGrade = 'C';
-//            } else if (grade >= 80 & grade <= 87) {
-//                letterGrade = 'B';
-//            } else if (grade >= 88 & grade <= 100) {
+//            char letterGrade = '';
+//            if (grade >= 88) {
 //                letterGrade = 'A';
+//            } else if (grade >= 80) {
+//                letterGrade = 'B';
+//            } else if (grade >= 67) {
+//                letterGrade = 'C';
+//            } else if (grade >= 60) {
+//                letterGrade = 'D';
+//            } else {
+//                letterGrade = 'F';
 //            }
 //            System.out.println("Your corresponding letter grade is " + letterGrade);
 //            System.out.print("\nWould you like to continue? (Note: only 'YES' make you continue)\n");
@@ -130,30 +131,31 @@ public class ControlFlowExercises {
             System.out.println("What grade did you get form the assessment? (Note: 0 - 100)");
             int grade = scanner.nextInt();
             String letterGrade = "";
-            if (grade >= 0 & grade < 65) {
-                letterGrade = "E/F";
-            } else if (grade >= 65 & grade <= 66) {
-                letterGrade = "D";
-            } else if (grade >= 67 & grade <= 69) {
-                letterGrade = "D+";
-            } else if (grade >= 70 & grade <= 72) {
-                letterGrade = "C-";
-            } else if (grade >= 73 & grade <= 76) {
-                letterGrade = "C";
-            } else if (grade >= 77 & grade <= 79) {
-                letterGrade = "C+";
-            } else if (grade >= 80 & grade <= 82) {
-                letterGrade = "B-";
-            } else if (grade >= 83 & grade <= 86) {
-                letterGrade = "B";
-            } else if (grade >= 87 & grade <= 89) {
-                letterGrade = "B+";
-            } else if (grade >= 90 & grade <= 92) {
-                letterGrade = "A-";
-            } else if (grade >= 93 & grade <= 96) {
-                letterGrade = "A";
-            } else if (grade >= 97 & grade <= 100) {
+            // going descending orders -- from most specific to least specific
+            if (grade >= 97) {
                 letterGrade = "A+";
+            } else if (grade >= 93) {
+                letterGrade = "A";
+            } else if (grade >= 90) {
+                letterGrade = "A-";
+            } else if (grade >= 87) {
+                letterGrade = "B+";
+            } else if (grade >= 83) {
+                letterGrade = "B";
+            } else if (grade >= 80) {
+                letterGrade = "B-";
+            } else if (grade >= 77) {
+                letterGrade = "C+";
+            } else if (grade >= 73) {
+                letterGrade = "C";
+            } else if (grade >= 70) {
+                letterGrade = "C-";
+            } else if (grade >= 67) {
+                letterGrade = "D+";
+            } else if (grade >= 65) {
+                letterGrade = "D";
+            } else {
+                letterGrade = "E/F";
             }
             System.out.println("Your corresponding letter grade is " + letterGrade);
             System.out.print("\nWould you like to continue? (Note: only 'YES' make you continue)\n");
