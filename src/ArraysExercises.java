@@ -4,7 +4,7 @@ public class ArraysExercises {
     public static Person[] addPerson(Person[] people, Person person) {
         int length = people.length;
         Person[] newArray = Arrays.copyOf(people, length + 1);
-        newArray[length] = new Person(person.name);
+        newArray[length] = new Person(person.getName());
         return newArray;
     }
     public static void main(String[] args) {
@@ -18,14 +18,14 @@ public class ArraysExercises {
         people[2] = new Person("Emma");
 
         for (Person person : people) {
-            System.out.println(person.name);
+            System.out.println(person.getName());
         }
         System.out.println();
 
         Person[] newPeople = addPerson(people, new Person("Riley"));
 
         for (Person person : newPeople) {
-            System.out.println(person.name);
+            System.out.println(person.getName());
         }
     }
 }
