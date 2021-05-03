@@ -6,13 +6,16 @@ public class Input {
     private static Scanner scanner;
 
     static String getString() {
-        System.out.println("Please enter a string.");
         scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    static boolean yesNo() {
-        System.out.println("Please enter a string.");
+    static String getString(String prompt) {
+        System.out.println(prompt);
+        return getString();
+    }
+
+    public static boolean yesNo() {
         scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
@@ -20,6 +23,11 @@ public class Input {
         } else {
             return false;
         }
+    }
+
+    public static boolean yesNo(String prompt) {
+        System.out.println(prompt);
+        return yesNo();
     }
 
     static int getInt(int min, int max) {
@@ -32,8 +40,18 @@ public class Input {
         return integer;
     }
 
+    static int getInt(int min, int max, String prompt) {
+        System.out.println(prompt);
+        return getInt(min, max);
+    }
+
     static int getInt() {
-        System.out.println("Please enter a whole number.");
+        scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    static int getInt(String prompt) {
+        System.out.println(prompt);
         scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
@@ -48,9 +66,18 @@ public class Input {
         return decimal;
     }
 
+    static double getDouble(double min, double max, String prompt) {
+        System.out.println(prompt);
+        return getDouble(min, max);
+    }
+
     public static double getDouble() {
         scanner = new Scanner(System.in);
         return scanner.nextDouble();
     }
 
+    public static double getDouble(String prompt) {
+        System.out.println(prompt);
+        return getDouble();
+    }
 }
