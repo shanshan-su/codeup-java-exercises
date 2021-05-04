@@ -45,7 +45,7 @@ public class Input {
         return getInt(min, max);
     }
 
-    static int getInt() {
+    public static int getInt() {
         scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
