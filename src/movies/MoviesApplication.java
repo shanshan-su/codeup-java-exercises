@@ -13,40 +13,28 @@ public class MoviesApplication {
         System.out.println("2 - view movies in the animated category");
         System.out.println("3 - view movies in the drama category");
         System.out.println("4 - view movies in the horror category");
-        System.out.println("5 - view movies in the scifi category\n");
+        System.out.println("5 - view movies in the scifi category");
+        System.out.println("6 - add a new movie to the list\n");
 
         System.out.print("Enter your choice: ");
         int number = Input.getInt();
         if (number == 0) {
             System.out.println("Thank you for using the search function. Welcome back next time :)");
         } else if (number == 1) {
-            for (Movie movie : movies) {
-                System.out.printf("%s -- %s\n", movie.getName(), movie.getCategory());
-            }
+            Movie.displayAllMovies(movies);
         } else if (number == 2) {
-            for (Movie movie : movies) {
-                if (movie.getCategory().equalsIgnoreCase("animated")) {
-                    System.out.printf("%s -- animated\n", movie.getName());
-                }
-            }
+            Movie.displaySelectedMovies(movies, "animated");
         } else if (number == 3) {
-            for (Movie movie : movies) {
-                if (movie.getCategory().equalsIgnoreCase("drama")) {
-                    System.out.printf("%s -- drama\n", movie.getName());
-                }
-            }
+            Movie.displaySelectedMovies(movies, "drama");
         } else if (number == 4) {
-            for (Movie movie : movies) {
-                if (movie.getCategory().equalsIgnoreCase("horror")) {
-                    System.out.printf("%s -- horror\n", movie.getName());
-                }
-            }
+            Movie.displaySelectedMovies(movies, "horror");
         } else if (number == 5) {
-            for (Movie movie : movies) {
-                if (movie.getCategory().equalsIgnoreCase("scifi")) {
-                    System.out.printf("%s -- scifi\n", movie.getName());
-                }
-            }
+            Movie.displaySelectedMovies(movies, "scifi");
+        } else if (number == 6) {
+            String name = Input.getString("Enter the movie's name.");
+            String category = Input.getString("Enter the movie's category.");
+            Movie[] newMovies = Movie.addMovie(movies, name, category);
+            Movie.displayAllMovies(newMovies);
         } else {
             System.out.println("You entered wrong number.");
         }

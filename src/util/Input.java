@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Input {
     private static Scanner scanner;
 
-    static String getString() {
+    public static String getString() {
         scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    static String getString(String prompt) {
+    public static String getString(String prompt) {
         System.out.println(prompt);
         return getString();
     }
