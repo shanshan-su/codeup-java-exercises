@@ -4,7 +4,15 @@ import util.Input;
 
 public class CircleApp {
 
-    private static int count = 0;
+    private static int count;
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static int addOne(int count) {
+        return count + 1;
+    }
 
     public static void main(String[] args) {
         do {
@@ -15,10 +23,10 @@ public class CircleApp {
             double area = circle.getArea(radius);
             double circumference = circle.getCircumference(radius);
             System.out.printf("The circle's radius is %f.\nIts circumference is %f.\nIts area is %f.\n", radius, circumference, area);
-            Circle.addOne(count);
+            count = addOne(count);
             System.out.println();
             System.out.print("Would you like to make another circle? ");
         } while(Input.yesNo());
-        System.out.printf("You've created %d circles.\n", count);
+        System.out.printf("You've created %d circles.\n", getCount());
     }
 }
