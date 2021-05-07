@@ -9,17 +9,17 @@ public class Square extends Quadrilateral {
 
     @Override
     public void setLength(double side) {
-        this.side = side;
+        this.length = side;
     }
 
     @Override
     public void setWidth(double side) {
-        this.side = side;
+        this.width = side;
     }
 
     @Override
     public double getPerimeter() {
-        return this.length * 4;  // why only length or width work?
+        return this.length * 4;  // why only length or width work --> got to go back to the superclass to use the same variable name from superclass
 //        return (this.length + this.width) * 2;
     }
 
