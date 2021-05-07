@@ -26,7 +26,9 @@ public class ShapesTest {
         System.out.println("myShape.getArea() = " + myShape.getArea());
 
         // Why does the code fail to compile if you leave off the getPerimeter method in Rectangle?
+        // If Quadrilateral class have getPerimeter() and getArea() and override them, its subclass doesn't need to implement Measurable. But Quadrilateral is an abstract class so when it implements Measurable it doesn't have to override the methods then its subclass has to override the methods even without the keywords -- implements Measurable
 
         // What happens if you try to call the getLength or getWidth methods of the myShape variable? Why?
+        // The code cannot compile since getLength() and getWidth() belong to Quadrilateral class but not Measurable interface
     }
 }
