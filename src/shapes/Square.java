@@ -1,8 +1,7 @@
 package shapes;
 
 public class Square extends Quadrilateral {
-    protected double side;
-
+    // using the superclass Quadrilateral constructor, we don't need to declare a variable named side since Square extends Quadrilateral
     public Square(double side) {
         super(side, side);
     }
@@ -19,13 +18,11 @@ public class Square extends Quadrilateral {
 
     @Override
     public double getPerimeter() {
-        return this.length * 4;  // why only length or width work --> got to go back to the superclass to use the same variable name from superclass
-//        return (this.length + this.width) * 2;
+        return this.length * 4;
     }
 
     @Override
     public double getArea() {
         return this.length * this.length;
-//        return this.length * this.width;
     }
 }
