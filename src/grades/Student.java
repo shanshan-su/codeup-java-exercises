@@ -1,14 +1,19 @@
 package grades;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Student {
-    private final String name;
-    private ArrayList<Integer> grades = new ArrayList<>();
+    private String name;
+    private ArrayList<Integer> grades;
+    public Map<String, String> attendance;
 
     public Student(String name) {
         this.name = name;
+        this.grades = new ArrayList<>();
+        this.attendance = new HashMap<>();
     }
 
     // returns the student's name
@@ -31,7 +36,33 @@ public class Student {
         for (int grade : grades) {
             totalGrades += grade;
         }
-        return (float)totalGrades / grades.size();
+        return (double)totalGrades / grades.size();
+    }
+
+    public void recordAttendance(String date, String value) {
+        if (value.equalsIgnoreCase("A") || value.equalsIgnoreCase("P")) {
+            this.attendance.put(date, value);
+        }
+    }
+
+    public double getAttendancePercentage() {
+        int absentDays = 0;
+        for (String key : this.attendance.keySet()) {
+            if (this.attendance.get(key).equalsIgnoreCase("A")) {
+                absentDays += 1;
+            }
+        }
+        return (double) (this.attendance.size() - absentDays) / this.attendance.size();
+    }
+
+    public List<String> getDatesOfAbsence() {
+        List<String> datesOfAbsence = new ArrayList<>();
+        for (String key : this.attendance.keySet()) {
+            if (this.attendance.get(key).equalsIgnoreCase("A") && !datesOfAbsence.contains(key)) {
+                datesOfAbsence.add(key);
+            }
+        }
+        return datesOfAbsence;
     }
 
     public static void main(String[] args) {
