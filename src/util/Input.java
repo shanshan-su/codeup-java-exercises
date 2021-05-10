@@ -34,8 +34,7 @@ public class Input {
         int integer = getInt();
         while (integer < min || integer > max) {
             System.out.printf("Please enter an integer between %d and %d.\n", min, max);
-            scanner = new Scanner(System.in);
-            integer = scanner.nextInt();
+            integer = getInt();
         }
         return integer;
     }
@@ -45,23 +44,25 @@ public class Input {
         return getInt(min, max);
     }
 
-    public static int getInt() {
-        scanner = new Scanner(System.in);
-        return scanner.nextInt();
+    public static int getInt() throws NumberFormatException {
+        try {
+            return Integer.valueOf(getString());
+        } catch (NumberFormatException e) {
+            System.out.println("User did not enter a required integer.");
+            return 0;
+        }
     }
 
     public static int getInt(String prompt) {
         System.out.println(prompt);
-        scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        return getInt();
     }
 
     static double getDouble(double min, double max) {
         double decimal = getDouble();
         while (decimal < min || decimal > max) {
             System.out.printf("Please enter an decimal between %f and %f.\n", min, max);
-            scanner = new Scanner(System.in);
-            decimal = scanner.nextDouble();
+            decimal = getDouble();
         }
         return decimal;
     }
@@ -71,9 +72,14 @@ public class Input {
         return getDouble(min, max);
     }
 
-    public static double getDouble() {
-        scanner = new Scanner(System.in);
-        return scanner.nextDouble();
+    public static double getDouble() throws NumberFormatException {
+        try {
+            return Double.valueOf(getString());
+        } catch (NumberFormatException e) {
+            System.out.println("User did not enter a required decimal number.");
+            e.printStackTrace(System.out);
+            return 0;
+        }
     }
 
     public static double getDouble(String prompt) {
