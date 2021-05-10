@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class InputTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NumberFormatException {
 //        Input.getString("Please enter a string.");
 
 //        System.out.println("Input.yesNo(\"please enter a string.\") = " + Input.yesNo("please enter a string."));
@@ -32,6 +32,18 @@ public class InputTest {
             } else {
                 System.out.println(Input.getDouble("Please enter a decimal number."));
             }
+        }
+
+        try {
+            System.out.println("Your number is " + Input.getBinary());
+        } catch (NumberFormatException e) {
+            System.out.println("The number you entered is NOT a binary.");
+        }
+
+        try {
+            System.out.println("Your number is " + Input.getHex());
+        } catch (NumberFormatException e) {
+            System.out.println("The number you entered is NOT a hexidecimal number.");
         }
     }
 }

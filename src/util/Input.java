@@ -86,4 +86,18 @@ public class Input {
         System.out.println(prompt);
         return getDouble();
     }
+
+    public static int getBinary() {
+        System.out.print("Enter a binary number: ");
+        Scanner scanner = new Scanner(System.in);
+        String binary = scanner.next();
+        return Integer.valueOf(binary, 2);
+    }
+
+    public static int getHex() {
+        System.out.print("Enter a hexidecimal number: ");
+        Scanner scanner = new Scanner(System.in);
+        String hex = scanner.next();
+        return Integer.valueOf(hex, 16);
+    }
 }
