@@ -30,7 +30,7 @@ public class Input {
         return yesNo();
     }
 
-    static int getInt(int min, int max) {
+    public static int getInt(int min, int max) {
         int integer = getInt();
         while (integer < min || integer > max) {
             System.out.printf("Please enter an integer between %d and %d.\n", min, max);
@@ -50,7 +50,7 @@ public class Input {
         return scanner.nextInt();
     }
 
-    static int getInt(String prompt) {
+    public static int getInt(String prompt) {
         System.out.println(prompt);
         scanner = new Scanner(System.in);
         return scanner.nextInt();
