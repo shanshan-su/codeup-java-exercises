@@ -49,7 +49,7 @@ public class Input {
             return Integer.valueOf(getString());
         } catch (NumberFormatException e) {
             System.out.println("User did not enter a required integer.");
-            return 0;
+            return getInt("Please enter a whole number.");
         }
     }
 
@@ -78,7 +78,7 @@ public class Input {
         } catch (NumberFormatException e) {
             System.out.println("User did not enter a required decimal number.");
             e.printStackTrace(System.out);
-            return 0;
+            return getDouble();
         }
     }
 
