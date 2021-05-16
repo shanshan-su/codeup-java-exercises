@@ -4,36 +4,41 @@ import util.Input;
 
 import java.util.*;
 
-public class GroceryListApplication extends GroceryCategories {
+public class GroceryListApplication {
+
 
     public static void main(String[] args) {
+        Grocery grocery = new Grocery();
         List<String> groceryList = new ArrayList<>();
         Map<String, List<String>> groceries = new HashMap<>();
 
         if(Input.yesNo("Would you like to create a grocery list?")) {
-            // display all the categories
-            DisplayCategories.displayCategories();
+
 
             do {
+                // display all the categories
+                grocery.displayCategories();
                 // ask the user to select the category
                 int selectedCategory = Input.getInt("Please enter the category number: ");
 
                 // check if category that the user has entered is in the provided grocery categories list
-                if (groceryCategories.containsKey(selectedCategory)) {
+                if (grocery.categories.containsKey(selectedCategory)) {
                     do {
                         //ask the user for the item and quantity
-                        String itemName = Input.getString("Please enter one item that you want to buy.");
+                        String itemName = Input.getString("Please enter one item (" + grocery.categories.get(selectedCategory) + ").");
                         int itemQuantity = Input.getInt("How many would you like to buy?");
 
                         // add item and quantity to the list
-                        groceryList.add(itemName + itemQuantity);
-                    } while (Input.yesNo("Would you like to continue add more items in the same category?"));
+                        groceryList.add(itemName + ": " + itemQuantity);
+                    } while (Input.yesNo("Continue in the same category? [y/n]"));
+
                     // add category and related items and quantities to groceries
-                groceries.putIfAbsent(groceryCategories.get(selectedCategory), groceryList);
+                    groceries.put(grocery.categories.get(selectedCategory), groceryList);
+
                     // empty groceryList for the next category
-                    groceryList.clear();
+                    groceryList = new ArrayList<>(); // .clear() cannot work since it will clear the memory
                 }
-            } while (Input.yesNo("Would you like to add more items on other categories?"));
+            } while (Input.yesNo("Would you like to pick another category? [y/n]"));
 
 
             System.out.println("Here's your grocery list: \n");
@@ -42,12 +47,12 @@ public class GroceryListApplication extends GroceryCategories {
             for (String category : groceries.keySet()) {
                 System.out.println(category);
 
-                // sort groceryList
-                Collections.sort(groceryList);
+                // sort the items inside the category
+                Collections.sort(groceries.get(category));
 
                 // go through groceryList and print out the item and the quantity
-                for (String grocery : groceryList) {
-                    System.out.printf("%s\n", grocery);
+                for (String item : groceries.get(category)) {
+                    System.out.printf("%s\n", item);
                 }
                 System.out.println();
             }
