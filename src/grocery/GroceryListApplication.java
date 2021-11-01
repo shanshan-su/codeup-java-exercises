@@ -8,29 +8,30 @@ public class GroceryListApplication {
 
 
     public static void main(String[] args) {
+        Input input = new Input();
         Grocery grocery = new Grocery();
         List<String> groceryList = new ArrayList<>();
         Map<String, List<String>> groceries = new HashMap<>();
 
-        if(Input.yesNo("Would you like to create a grocery list?")) {
+        if(input.yesNo("Would you like to create a grocery list?")) {
 
 
             do {
                 // display all the categories
                 grocery.displayCategories();
                 // ask the user to select the category
-                int selectedCategory = Input.getInt("Please enter the category number: ");
+                int selectedCategory = input.getInt("Please enter the category number: ");
 
                 // check if category that the user has entered is in the provided grocery categories list
                 if (grocery.categories.containsKey(selectedCategory)) {
                     do {
                         //ask the user for the item and quantity
-                        String itemName = Input.getString("Please enter one item (" + grocery.categories.get(selectedCategory) + ").");
-                        int itemQuantity = Input.getInt("How many would you like to buy?");
+                        String itemName = input.getString("Please enter one item (" + grocery.categories.get(selectedCategory) + ").");
+                        int itemQuantity = input.getInt("How many would you like to buy?");
 
                         // add item and quantity to the list
                         groceryList.add(itemName + ": " + itemQuantity);
-                    } while (Input.yesNo("Continue in the same category? [y/n]"));
+                    } while (input.yesNo("Continue in the same category? [y/n]"));
 
                     // add category and related items and quantities to groceries
                     groceries.put(grocery.categories.get(selectedCategory), groceryList);
@@ -38,7 +39,7 @@ public class GroceryListApplication {
                     // empty groceryList for the next category
                     groceryList = new ArrayList<>(); // .clear() cannot work since it will clear the memory
                 }
-            } while (Input.yesNo("Would you like to pick another category? [y/n]"));
+            } while (input.yesNo("Would you like to pick another category? [y/n]"));
 
 
             System.out.println("Here's your grocery list: \n");

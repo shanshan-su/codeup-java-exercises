@@ -3,20 +3,22 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private static Scanner scanner;
+    private Scanner scanner;
 
-    public static String getString() {
-        scanner = new Scanner(System.in);
+    public Input() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public String getString() {
         return scanner.nextLine();
     }
 
-    public static String getString(String prompt) {
+    public String getString(String prompt) {
         System.out.println(prompt);
         return getString();
     }
 
-    public static boolean yesNo() {
-        scanner = new Scanner(System.in);
+    public boolean yesNo() {
         String input = scanner.nextLine();
         if (input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes")) {
             return true;
@@ -25,12 +27,12 @@ public class Input {
         }
     }
 
-    public static boolean yesNo(String prompt) {
+    public boolean yesNo(String prompt) {
         System.out.println(prompt);
         return yesNo();
     }
 
-    public static int getInt(int min, int max) {
+    public int getInt(int min, int max) {
         int integer = getInt();
         while (integer < min || integer > max) {
             System.out.printf("Please enter an integer between %d and %d.\n", min, max);
@@ -39,12 +41,12 @@ public class Input {
         return integer;
     }
 
-    static int getInt(int min, int max, String prompt) {
+    public int getInt(int min, int max, String prompt) {
         System.out.println(prompt);
         return getInt(min, max);
     }
 
-    public static int getInt() throws NumberFormatException {
+    public int getInt() throws NumberFormatException {
         try {
             return Integer.valueOf(getString());
         } catch (NumberFormatException e) {
@@ -53,12 +55,12 @@ public class Input {
         }
     }
 
-    public static int getInt(String prompt) {
+    public int getInt(String prompt) {
         System.out.println(prompt);
         return getInt();
     }
 
-    static double getDouble(double min, double max) {
+    public double getDouble(double min, double max) {
         double decimal = getDouble();
         while (decimal < min || decimal > max) {
             System.out.printf("Please enter an decimal between %f and %f.\n", min, max);
@@ -67,12 +69,12 @@ public class Input {
         return decimal;
     }
 
-    static double getDouble(double min, double max, String prompt) {
+    public double getDouble(double min, double max, String prompt) {
         System.out.println(prompt);
         return getDouble(min, max);
     }
 
-    public static double getDouble() throws NumberFormatException {
+    public double getDouble() throws NumberFormatException {
         try {
             return Double.valueOf(getString());
         } catch (NumberFormatException e) {
@@ -82,19 +84,19 @@ public class Input {
         }
     }
 
-    public static double getDouble(String prompt) {
+    public double getDouble(String prompt) {
         System.out.println(prompt);
         return getDouble();
     }
 
-    public static int getBinary() {
+    public int getBinary() {
         System.out.print("Enter a binary number: ");
         Scanner scanner = new Scanner(System.in);
         String binary = scanner.next();
         return Integer.valueOf(binary, 2);
     }
 
-    public static int getHex() {
+    public int getHex() {
         System.out.print("Enter a hexidecimal number: ");
         Scanner scanner = new Scanner(System.in);
         String hex = scanner.next();

@@ -4,6 +4,7 @@ import util.Input;
 
 public class MoviesApplication {
     public static void main(String[] args) {
+        Input input = new Input();
         Movie[] movies = MoviesArray.findAll();
 
         System.out.println("What would you like to do?\n");
@@ -17,7 +18,7 @@ public class MoviesApplication {
         System.out.println("6 - add a new movie to the list\n");
 
         System.out.print("Enter your choice: ");
-        int number = Input.getInt();
+        int number = input.getInt();
         if (number == 0) {
             System.out.println("Thank you for using the search function. Welcome back next time :)");
         } else if (number == 1) {
@@ -31,8 +32,8 @@ public class MoviesApplication {
         } else if (number == 5) {
             Movie.displaySelectedMovies(movies, "scifi");
         } else if (number == 6) {
-            String name = Input.getString("Enter the movie's name.");
-            String category = Input.getString("Enter the movie's category.");
+            String name = input.getString("Enter the movie's name.");
+            String category = input.getString("Enter the movie's category.");
             Movie[] newMovies = Movie.addMovie(movies, name, category);
             Movie.displayAllMovies(newMovies);
         } else {

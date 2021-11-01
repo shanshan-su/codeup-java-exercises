@@ -15,9 +15,10 @@ public class CircleApp {
     }
 
     public static void main(String[] args) {
+        Input input = new Input();
         do {
             System.out.println("Please enter a radius for a circle.");
-            double radius = Input.getDouble();
+            double radius = input.getDouble();
             Circle circle = new Circle(radius);
 
             double area = circle.getArea(radius);
@@ -26,7 +27,7 @@ public class CircleApp {
             count = addOne(count);
             System.out.println();
             System.out.print("Would you like to make another circle? ");
-        } while(Input.yesNo());
+        } while(input.yesNo());
         System.out.printf("You've created %d circles.\n", getCount());
     }
 }
