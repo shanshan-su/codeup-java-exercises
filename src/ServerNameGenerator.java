@@ -11,7 +11,7 @@ public class ServerNameGenerator {
     }
 
     public static void main(String[] args) {
-        boolean userContinue = true;
+        boolean userContinue;
         do {
             String adjective = getElement(adjectives);
             String noun = getElement(nouns);
@@ -19,11 +19,8 @@ public class ServerNameGenerator {
             System.out.printf("%s-%s\n", adjective, noun);
             System.out.print("Continue?[y/n] ");
             Scanner scanner = new Scanner(System.in);
-            if (scanner.next().equalsIgnoreCase("y")) {
-                userContinue = true;
-            } else {
-                userContinue = false;
-            }
+            String userInput = scanner.next();
+            userContinue = userInput.equalsIgnoreCase("y");
         } while (userContinue);
 
     }
